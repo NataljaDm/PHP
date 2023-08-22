@@ -1,0 +1,16 @@
+{
+    "name": "user/donuts",
+    "description": "Donuts shop",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Donuts\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DonutsGir" 
+        }
+    ],
+    "require": {}
+}
