@@ -1,11 +1,65 @@
-@import 'bootstrap/scss/bootstrap'; 
+@import 'bootstrap/scss/bootstrap';
 
 body {
-    font-family: 'Noto Sans Zanabazar Square', sans-serif;
+    background-color: #ddd;
 }
 
+.bin {
+    margin: 20px 300px;
+    padding: 20px;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+    background-color: rgba(33, 37, 41, 0.1);
+}
 
-ul.navbar-nav {
-    flex-direction: row;
-    gap: 20px;
+.messages {
+    position: fixed;
+    right: 30px;
+    top: 60px;
+    z-index: 999;
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 10px;
+
+}
+
+.confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.homeBin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+
+    h1 {
+        font-size: 60px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+}
+
+.accCenter {
+    margin-top: 250px;
+}
+
+.nameSum {
+    padding-top: 5px;
+}
+
+.menu {
+    background-color: #ccc;
+}
+
+table {
+    border-radius: 15px;
 }

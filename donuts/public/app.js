@@ -7,14 +7,12 @@
   \*****************************/
 /***/ (() => {
 
-if (document.querySelector('#--hole')) {
-  var hole = document.querySelector('#--hole');
-  var text = hole.querySelector('b');
-  var input = hole.querySelector('input');
-  input.addEventListener('input', function (_) {
-    text.innerText = input.value;
+document.querySelectorAll('.--msg .alert').forEach(function (alert) {
+  alert.querySelector('button').addEventListener('click', function (e) {
+    e.preventDefault();
+    alert.remove();
   });
-}
+});
 
 /***/ }),
 
@@ -158,7 +156,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = self["webpackChunkdonuts"] = self["webpackChunkdonuts"] || [];
+/******/ 		var chunkLoadingGlobal = self["webpackChunku3"] = self["webpackChunku3"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

@@ -1,11 +1,12 @@
 <?php
-use Donuts\App;
+use Acc\App;
 
+session_start();
 
-define('ROOT', __DIR__ . '/../');
-define('URL', 'http://donuts.test/');
+define('ROOT', __DIR__ . '/../'); //serverio path
+define('URL', 'http://u3.test'); //narsykles path
 
-require_once '../vendor/autoload.php';
-
+require '../app/functions.php';
+require '../vendor/autoload.php';
 
 echo App::start();

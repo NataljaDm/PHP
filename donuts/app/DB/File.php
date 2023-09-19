@@ -1,27 +1,20 @@
 <?php
-namespace Donuts\DB;
+namespace Acc\DB;
 
 use App\DB\DataBase;
 
+class File implements DataBase
+{
 
-class FileDB implements DataBase {
+    private $fileName, $data;
 
-    // function create(array $userData) : void;
-    // function update(int $userId, array $userData) : void;
-    // function delete(int $userId) : void;
-    // function show(int $userId) : array;
-    // function showAll() : array;
-
-    private $file, $data;
-
-    public function __construct($filName)
+    public function __construct($fileName)
     {
-        $this->file =  ROOT . 'data/' . $filName . '.json';
-        
+        $this->file = ROOT . 'data/' . $fileName . '.json';
+
         if (!file_exists($this->file)) {
             file_put_contents($this->file, json_encode([]));
         }
-
         $this->data = json_decode(file_get_contents($this->file), 1);
     }
 
@@ -30,14 +23,18 @@ class FileDB implements DataBase {
         file_put_contents($this->file, json_encode($this->data));
     }
 
-    public function create(array $data) : void
+    public function create(array $data): void
     {
         $id = rand(100000000, 999999999);
         $data['id'] = $id;
+        $data['sasId'] = sasId();
+        $data['sum'] = 0;
+        $data['password'] = md5($data['password']);
+        $data['role'] = 'user';
         $this->data[] = $data;
     }
 
-    public function update(int $id, array $data) : void
+    public function update(int $id, array $data): void
     {
         foreach ($this->data as $key => $dataLine) {
             if ($dataLine['id'] == $id) {
@@ -48,7 +45,8 @@ class FileDB implements DataBase {
         }
     }
 
-    public function delete(int $id) : void
+
+    public function delete(int $id): void
     {
         foreach ($this->data as $key => $dataLine) {
             if ($dataLine['id'] == $id) {
@@ -56,22 +54,21 @@ class FileDB implements DataBase {
                 return;
             }
         }
+        return;
     }
 
-    public function show(int $id) : array
+    public function show(int $id): array
     {
         foreach ($this->data as $dataLine) {
             if ($dataLine['id'] == $id) {
                 return $dataLine;
             }
         }
+        return [];
     }
 
-    public function showAll() : array
+    public function showAll(): array
     {
         return $this->data;
     }
-
-
-
 }
