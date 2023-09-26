@@ -79,7 +79,19 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, Invoice $invoice)
     {
-        //
+        // fill the object with data from the request
+        $invoice->invoice_number = $request->number;
+        $invoice->invoice_date = $request->date;
+        $invoice->client_name = $request->name;
+        $invoice->client_address = $request->address;
+        $invoice->client_address2 = $request->address2;
+        $invoice->client_vat = $request->vat;
+        $invoice->client_country = $request->country;
+        $invoice->invoice_amount = $request->amount;
+
+        $invoice->save(); // save the object to the database
+
+        return redirect()->route('invoices-index'); // redirect to the index page
     }
 
 
