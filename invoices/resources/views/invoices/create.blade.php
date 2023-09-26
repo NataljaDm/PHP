@@ -13,7 +13,7 @@
                  <h1>Create Invoice</h1>
                 </div>
                 <div class="card-body">
-                    <form action={{route('invoices-store')}} metord="post">
+                    <form action={{route('invoices-store')}} method="post">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-5">

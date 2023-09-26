@@ -14,8 +14,14 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        $invoices = Invoice::all(); //get all invoices from the database
+        
+        return view('invoices.index', [
+      'invoices' => $invoices,
+      'countries' => Invoice::$countryList,
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +30,8 @@ class InvoiceController extends Controller
     {
         return view('invoices.create' ,[
             'countries' => Invoice::$countryList,
-        ]);
+             ]
+        );
     }
 
     /**
@@ -32,7 +39,20 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // fill the object with data from the request
+        $invoice = new Invoice;
+        $invoice->invoice_number = $request->number;
+        $invoice->invoice_data = $request->data;
+        $invoice->client_name = $request->name;
+        $invoice->client_address = $request->address;
+        $invoice->client_address2 = $request->address2;
+        $invoice->client_vat = $request->vat;
+        $invoice->client_country = $request->country;
+        $invoice->invoice_amount = $request->amount;
+
+        $invoice->save(); // save the object to the database
+
+        return redirect()->route('invoices-index'); // redirect to the index page
     }
 
     /**
@@ -48,7 +68,10 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        //
+        return view('invoices.edit', [
+            'invoice' => $invoice,
+            'countries' => Invoice::$countryList,
+        ]);
     }
 
     /**
@@ -59,11 +82,26 @@ class InvoiceController extends Controller
         //
     }
 
+
+ /**
+     * Show delete confirmation page.
+     */
+    public function delete(Invoice $invoice)
+    {
+       return view('invoices.delete', [
+           'invoice' => $invoice,
+        ]);
+    }
+
+
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Invoice $invoice)
     {
-        //
+        $invoice->delete(); // delete the object from the database
+
+        return redirect()->route('invoices-index'); // redirect to the index page
     }
 }
