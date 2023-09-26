@@ -81,7 +81,7 @@ class InvoiceController extends Controller
     {
         // fill the object with data from the request
         $invoice->invoice_number = $request->number;
-        $invoice->invoice_date = $request->date;
+        $invoice->invoice_data = $request->data;
         $invoice->client_name = $request->name;
         $invoice->client_address = $request->address;
         $invoice->client_address2 = $request->address2;
